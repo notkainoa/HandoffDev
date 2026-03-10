@@ -1,6 +1,6 @@
 {
   "name": "handoffdev",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mirror the current folder into a disposable testing copy.",
   "type": "module",
   "bin": {
