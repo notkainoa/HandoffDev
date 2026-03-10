@@ -1,17 +1,51 @@
 # HandoffDev
 
-HandoffDev mirrors the folder you are currently in into a disposable testing copy. It is meant for workflows like Chrome extension development where your browser points at one stable unpacked-extension folder while you keep editing in different worktrees, branches, or local clones.
+HandoffDev copies the folder you are currently in into another folder for testing.
+
+It is built for workflows like Chrome extension development:
+
+1. Load one stable unpacked extension folder in Chrome.
+2. Keep working in whatever branch, worktree, or clone you want.
+3. Run `handoffdev` to refresh the testing copy.
+4. Reload the extension in Chrome.
 
 ## Install
+
+From npm, after the package is published:
+
+```sh
+npm install -g handoffdev
+```
+
+From this repo right now:
 
 ```sh
 npm install
 npm link
 ```
 
-After `npm link`, the `handoffdev` command is available in your shell.
+After `npm link`, `handoffdev` is available in your shell.
 
-## Usage
+## Quick Start
+
+Run it from inside the folder you want to mirror:
+
+```sh
+cd /path/to/your/project
+handoffdev
+```
+
+If you already know the destination:
+
+```sh
+handoffdev ~/Documents/GitHub/"test dev"
+handoffdev "~/Documents/GitHub/test dev"
+handoffdev $HOME/Documents/GitHub/"test dev"
+handoffdev "$HOME/Documents/GitHub/test dev"
+handoffdev --clean ~/Documents/GitHub/"test dev"
+```
+
+## Main Commands
 
 ```sh
 handoffdev
@@ -20,33 +54,26 @@ handoffdev --clean
 handoffdev --clean <destination>
 handoffdev <destination> --clean
 handoffdev -- <destination>
+handoffdev -h
+handoffdev --h
+handoffdev -help
 handoffdev --help
 ```
 
-Examples:
+## What It Does
 
-```sh
-handoffdev
-handoffdev ~/Documents/GitHub/"test dev"
-handoffdev "~/Documents/GitHub/test dev"
-handoffdev $HOME/Documents/GitHub/"test dev"
-handoffdev "$HOME/Documents/GitHub/test dev"
-handoffdev --clean ~/Documents/GitHub/"test dev"
-```
-
-## How it works
-
-- HandoffDev copies the contents of the current working directory into the destination with `rsync -a --delete`.
-- Default mode always excludes `.git` and `.DS_Store`.
+- Copies the contents of your current folder into a destination folder.
+- Uses `rsync --delete`, so the destination becomes a mirror of your current folder.
+- Always skips `.git/` and `.DS_Store`.
 - `--clean` also skips common local junk like `node_modules/` and cache folders.
-- If the destination already contains anything, HandoffDev asks for confirmation before continuing because the mirror deletes files that are not present in the source.
+- If the destination already has files in it, HandoffDev asks for confirmation before deleting anything.
 
-## Interactive mode
+## Interactive Mode
 
-- Running `handoffdev` with no destination opens an interactive flow built with `@clack/prompts`.
-- HandoffDev remembers the last 3 unique successful destinations per project.
-- Git worktrees share the same recent history because HandoffDev keys project history from `git rev-parse --git-common-dir`.
-- If there is no history yet, HandoffDev asks you to type a destination path.
+- Running `handoffdev` with no destination opens an interactive prompt.
+- HandoffDev remembers your last 3 unique successful destinations per project.
+- Git worktrees share the same recent history.
+- If there is no history yet, it asks you to enter a path.
 
 History is stored at:
 
@@ -54,18 +81,18 @@ History is stored at:
 ~/Library/Application Support/HandoffDev/history.json
 ```
 
-## Path rules
+## Path Rules
 
 - `~` and `$HOME` are supported.
 - Relative paths are resolved from the folder you run HandoffDev in.
-- Empty destinations, `/`, protected anchor folders, the current source folder, ancestors of the source, and descendants of the source are rejected.
-- HandoffDev compares paths case-insensitively only when the destination filesystem is case-insensitive, so `GitHub` and `Github` are treated as the same destination only in those environments.
+- Empty destinations, `/`, protected anchor folders, the current source folder, parents of the source folder, and children of the source folder are rejected.
+- On macOS, `GitHub` and `Github` are treated as the same path for safety checks and history matching.
 
 ## `$HOME` vs `$Home`
 
-Use `$HOME` or `~`. Do not use `$Home`.
+Use `$HOME` or `~`.
 
-In `zsh`, `$Home` expands before HandoffDev starts. On this machine it becomes `/Documents/...`, so HandoffDev never sees the original text and cannot recover what you meant. That resolved path is rejected as unsafe.
+Do not use `$Home`. In `zsh`, `$Home` expands before HandoffDev starts, so HandoffDev cannot recover what you meant and the resulting path is rejected as unsafe.
 
 ## Development
 
