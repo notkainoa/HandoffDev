@@ -1,0 +1,23 @@
+{
+  "name": "handoffdev",
+  "version": "0.1.0",
+  "description": "Mirror the current folder into a disposable testing copy.",
+  "type": "module",
+  "bin": {
+    "handoffdev": "./bin/handoffdev.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/handoffdev.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "cli",
+    "rsync",
+    "chrome-extension",
+    "worktree"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^0.11.0"
+  }
+}

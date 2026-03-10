@@ -1,0 +1,33 @@
+export function getHelpText() {
+  return [
+    "HandoffDev",
+    "",
+    "Mirror the current folder into a disposable testing copy.",
+    "",
+    "Usage:",
+    "  handoffdev",
+    "  handoffdev <destination>",
+    "  handoffdev --clean",
+    "  handoffdev --clean <destination>",
+    "  handoffdev <destination> --clean",
+    "  handoffdev -- <destination>",
+    "",
+    "Options:",
+    "  --clean    Exclude common local junk like node_modules and caches.",
+    "  -h         Show this help screen.",
+    "  --h        Show this help screen.",
+    "  -help      Show this help screen.",
+    "  --help     Show this help screen.",
+    "",
+    "Examples:",
+    "  handoffdev",
+    "  handoffdev ~/Documents/GitHub/Chrome\\ Extension\\ Dev/OpenType",
+    "  handoffdev \"$HOME/Documents/GitHub/test dev\"",
+    "  handoffdev --clean ./tmp/dev-copy",
+    "",
+    "Notes:",
+    "  Use $HOME or ~ for your home directory. $Home is not valid in zsh and expands",
+    "  to /Documents/... before HandoffDev starts, so HandoffDev will reject it.",
+    "  Any unknown - or -- option prints an error and shows this help screen."
+  ].join("\n");
+}
