@@ -1,0 +1,51 @@
+README.md
+  0ee8640b464b6aa2 1-74
+src/history.js
+  0ee8640b464b6aa2 1-140
+test/args.test.js
+  0ee8640b464b6aa2 1-66
+src/cli.js
+  0ee8640b464b6aa2 1-127
+test/history.test.js
+  0ee8640b464b6aa2 1-142
+test/paths.test.js
+  0ee8640b464b6aa2 1-210
+package.json
+  0ee8640b464b6aa2 1-23
+test/cli.integration.test.js
+  0ee8640b464b6aa2 1-247
+src/paths.js
+  0ee8640b464b6aa2 1-296
+src/prompts.js
+  0ee8640b464b6aa2 1-151
+.gitignore
+  0ee8640b464b6aa2 1-3
+src/args.js
+  0ee8640b464b6aa2 1-74
+src/rsync.js
+  0ee8640b464b6aa2 1-72
+bin/handoffdev.js
+  0ee8640b464b6aa2 1-6
+src/help.js
+  0ee8640b464b6aa2 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "99211dfc1b165d77338508fdbcfa83648d077aca",
+  "prompts": {
+    "0ee8640b464b6aa2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019cd8e7-f763-7aa2-9f81-efa7111b21f4",
+        "model": "unknown"
+      },
+      "human_author": "Kainoa Newton <k@kainoa.me>",
+      "messages": [],
+      "total_additions": 1664,
+      "total_deletions": 0,
+      "accepted_lines": 1664,
+      "overriden_lines": 0
+    }
+  }
+}
