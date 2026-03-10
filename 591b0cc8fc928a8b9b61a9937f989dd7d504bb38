@@ -1,0 +1,23 @@
+README.md
+  b3df2f81b2fcebfa 3,5-10,14-18,20-21,27,29,31,34,38,48-51,57-60,63,65-67,69,71,73-76,84,88-89,93,95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.9",
+  "base_commit_sha": "591b0cc8fc928a8b9b61a9937f989dd7d504bb38",
+  "prompts": {
+    "b3df2f81b2fcebfa": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ccff0-9b76-7fb3-9817-0df25c73f2cd",
+        "model": "gpt-5.4"
+      },
+      "human_author": "Kainoa Newton <k@kainoa.me>",
+      "messages": [],
+      "total_additions": 52,
+      "total_deletions": 25,
+      "accepted_lines": 47,
+      "overriden_lines": 0
+    }
+  }
+}
